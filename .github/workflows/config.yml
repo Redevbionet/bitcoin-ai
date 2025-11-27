@@ -1,0 +1,108 @@
+
+# PlaceholderAPI
+# เวอร์ชัน: 2.11.4
+# สร้างโดย: extended_clip
+# ผู้สนับสนุน: https://github.com/PlaceholderAPI/PlaceholderAPI/graphs/contributors
+# ปัญหา: https://github.com/PlaceholderAPI/PlaceholderAPI/issues
+# การขยาย: https://api.extendedclip.com/all/
+# Wiki: https://wiki.placeholderapi.com/
+# Discord: https://helpch.at/discord
+# ปลั๊กอินนี้ไม่ได้จัดเตรียมตัวแทนใดๆ ไว้ตามค่าเริ่มต้น
+# ตัวแทนการดาวน์โหลด: /papi ecloud
+check_updates : true
+cloud_enabled : true
+cloud_sorting : "name"
+cloud_allow_unverified_expansions : false
+boolean :
+  'true' : ' yes '
+  'false' : ' no '
+date_format : MM/dd/yy HH:mm:ss
+debug : false
+[​รูปภาพ]
+รหัส (YAML):
+
+สิทธิ์ :
+  placeholderapi.* :
+    คำอธิบาย: "ความสามารถในการใช้คำสั่ง PAPI ทั้งหมด"
+    ลูก :
+      placeholderapi.admin : true
+      placeholderapi.ecloud.* : true
+  placeholderapi.admin :
+    คำอธิบาย: "ความสามารถในการใช้คำสั่ง PAPI ทั้งหมด"
+    ลูก :
+      placeholderapi.help : true
+      placeholderapi.info : true
+      placeholderapi.list : true
+      placeholderapi.parse : true
+      placeholderapi.reload : true
+      placeholderapi.version : true
+      placeholderapi.register : true
+      placeholderapi.unregister : true
+      placeholderapi.updatenotify : true
+  placeholderapi.ecloud.* :
+    คำอธิบาย: "ความสามารถใน การใช้คำสั่ง PAPI ecloud ทั้งหมด"
+    ลูก :
+      placeholderapi.ecloud : true
+      placeholderapi.ecloud.info : true
+      placeholderapi.ecloud.list : true
+      placeholderapi.ecloud.clear : true
+      placeholderapi.ecloud.status : true
+      placeholderapi.ecloud.update : true
+      placeholderapi.ecloud.refresh : true
+      placeholderapi.ecloud.download : true
+      placeholderapi.ecloud.placeholders : true
+  placeholderapi.help :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณดูรายการคำสั่ง PAPI"
+  placeholderapi.info :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณดูข้อมูลการขยาย"
+  placeholderapi.list :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณแสดงรายการการขยายที่ใช้งานอยู่"
+  placeholderapi.ecloud :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณเข้าถึง PAPI eCloud"
+  placeholderapi.parse :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณแยกวิเคราะห์ตัวแทน"
+  placeholderapi.reload :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณโหลด PAPI และการกำหนดค่าใหม่"
+  placeholderapi.version :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณดูเวอร์ชันของ PAPI ที่ติดตั้ง"
+  placeholderapi.register :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณลงทะเบียนส่วนขยาย"
+  placeholderapi.unregister :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณยกเลิกการลงทะเบียนส่วนขยาย"
+  placeholderapi.updatenotify :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "แจ้งเตือนคุณเมื่อมีการอัปเดต PAPI"
+  placeholderapi.ecloud.info :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณดูข้อมูลการขยายระบบคลาวด์"
+  placeholderapi.ecloud.list :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณแสดงรายการการขยาย eCloud"
+  placeholderapi.ecloud.clear :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "อนุญาตให้คุณล้างแคชการขยาย eCloud ในเครื่อง"
+  placeholderapi.ecloud.status :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "ช่วยให้คุณสามารถดูสถานะของการขยาย eCloud"
+  placeholderapi.ecloud.update : ค่า
+    เริ่มต้น: "op "
+    คำอธิบาย: "ช่วยให้คุณสามารถอัปเดตการขยาย eCloud ที่ลงทะเบียนไว้"
+  placeholderapi.ecloud.refresh :
+    ค่าเริ่มต้น: " op "
+    คำอธิบาย: "ช่วยให้คุณสามารถรีเฟรชแคชการขยาย eCloud ในเครื่อง"
+  placeholderapi.ecloud.download :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "ช่วยให้คุณสามารถดาวน์โหลดการขยายจาก eCloud"
+  placeholderapi.ecloud.placeholders :
+    ค่าเริ่มต้น: "op"
+    คำอธิบาย: "ช่วยให้คุณสามารถดูตัวแทนของการขยาย eCloud"
+ 
