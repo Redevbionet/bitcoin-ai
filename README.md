@@ -1,29 +1,3 @@
-import datetime
-import logging
-from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
---- Configuration ---
-Your Bitcoin Core RPC username and password.
-These are typically found in your bitcoin.conf file.
-rpc_user = "your_rpc_username"
-rpc_password = "your_rpc_password"
-rpc_host = "127.0.0.1" # Or the IP address of your Bitcoin Core node
-rpc_port = 8332 # Default mainnet RPC port, use 18332 for testnet, 18443 for regtest
---- Logging Setup ---
-Configure the root logger to display timestamps, level, logger name, and message.
-This ensures that all log messages, including those from 'BitcoinRPC', have timestamps.
-logging.basicConfig(
-level=logging.DEBUG,
-format='%(asctime)s - %(levelname)s - %(name)s - %(message)s'
-)
-Set the logging level specifically for the 'BitcoinRPC' logger to DEBUG.
-This will show the detailed RPC calls and responses.
-logging.getLogger("BitcoinRPC").setLevel(logging.DEBUG)
---- Main Script Logic ---
-def get_network_connections_with_log():
-try:
-# Construct the RPC URL using the defined credentials and host/port.
-rpc_url = f"http://{rpc_user}:{rpc_password}@{rpc_host}:{rpc_port}"
-
 
 --- การกำหนดค่า ---
 ชื่อผู้ใช้และรหัสผ่าน Bitcoin Core RPC ของคุณ
@@ -51,3 +25,33 @@ def get_network_connections_with_log():
 พยายาม:
 # สร้าง URL RPC โดยใช้ข้อมูลประจำตัวและโฮสต์/พอร์ตที่กำหนด
 rpc_url = f"http://{rpc_user}:{rpc_password}@{rpc_host}:{rpc_port}"
+
+
+# Establish a connection to the Bitcoin Core RPC server.
+    # The AuthServiceProxy object handles HTTP connections and JSON-RPC specifics.
+    # Adding a timeout is good practice to prevent indefinite waits.
+    rpc_connection = AuthServiceProxy(rpc_url, timeout=120)
+
+    # Call the 'getnetworkinfo' RPC method to retrieve network-related information.
+    # The details of this call will be logged by the configured 'BitcoinRPC' logger.
+    network_info = rpc_connection.getnetworkinfo()
+
+    # Get the current time to timestamp our output.
+    current_time = datetime.datetime.now()
+
+    # Extract the number of connections from the returned network_info dictionary.
+    num_connections = network_info.get('connections', 'N/A')
+
+    # Print the number of connections along with the current timestamp.
+    print(f"{current_time} - Current Bitcoin network connections: {num_connections}")
+
+except JSONRPCException as e:
+    # Catch specific JSON-RPC errors (e.g., method not found, invalid parameters, RPC server issues).
+    print(f"Error communicating with Bitcoin Core RPC: {e.error}")
+except ConnectionRefusedError:
+    # Handle cases where the connection to the RPC server is refused.
+    print(f"Connection refused. Ensure Bitcoin Core is running and RPC is enabled on {rpc_host}:{rpc_port}.")
+    print("Check your bitcoin.conf for rpcbind, rpcallowip, rpcuser, rpcpassword settings.")
+except Exception as e:
+    # Catch any other unexpected errors during the process.
+    print(f"An unexpected error occurred: {e}")
