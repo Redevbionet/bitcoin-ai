@@ -1,0 +1,5 @@
+{
+  "name": "Bitcoin AI",
+  "description": "A comprehensive Bitcoin Node management dashboard powered by Gemini AI, featuring real-time network visualization, RPC console simulation, and intelligent log analysis.",
+  "requestFramePermissions": []
+}
